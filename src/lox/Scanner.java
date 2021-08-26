@@ -76,11 +76,6 @@ class Scanner {
             case '/':
                 if (match('/')) {
                     while (peek() != '\n' && !isAtEnd()) advance();
-                } else if (match('*')) {
-                    while (peek() != '*' && peekNext() != '/') {
-                        if (peek() == '\n') line++;
-                        advance();
-                    }
                 } else {
                     addToken(TokenType.SLASH);
                 }
@@ -89,7 +84,7 @@ class Scanner {
             case '\t':
                 // Ignore whitespace.
                 break;
-                
+
             case '\n':
                 line++;
                 break;
